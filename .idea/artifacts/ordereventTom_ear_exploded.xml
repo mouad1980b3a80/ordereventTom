@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="ordereventTom:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ordereventTom_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ordereventTom/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
