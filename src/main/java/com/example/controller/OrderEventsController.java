@@ -13,6 +13,7 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
+import jakarta.mvc.UriRef;
 import jakarta.mvc.View;
 import jakarta.mvc.binding.BindingResult;
 import jakarta.mvc.binding.ParamError;
@@ -32,11 +33,15 @@ public class OrderEventsController implements Serializable {
     Models model;
 
     @Inject
+    LsValMAPForm lsValMAPForm;
+
+    @Inject
     private BindingResult validationResult;
 
     @GET
+
     @View("orderevents.xhtml")
-    public void orderEventsVoid() {
+    public void orderEventsVoid(@BeanParam LsValMAPForm form) {
         System.out.println("lll");
         fetchOrderEvents();
         model.put("orderTypelocal", "TOrder");
@@ -63,14 +68,20 @@ public class OrderEventsController implements Serializable {
     @GET @Path("filter")
     public String helloString() {
        //TODO: pass current filter hidden fields if existing
-        model.put("name", "Mouad");
+
+        lsValMAPForm.setManId("MyMan");
+        lsValMAPForm.setEventType("eventType");
+        lsValMAPForm.setActionClass("ActionClass");
+        model.put("name", "filterr");
+        model.put("lsValMAPForm", lsValMAPForm);
         return "ordereventsFilter.xhtml";
     }
 
 
 
     @POST
-    @CsrfProtected
+    //@CsrfProtected TODO reintegrate this! Idea use same page for filter and list and just switch visibility?
+
     //@ValidateOnExecution(type = ExecutableType.NONE)
     public Response save(@Valid @BeanParam LsValMAPForm form) {
         //log.log(Level.INFO, "saving new lsValMAP @{0}", form);
@@ -95,7 +106,7 @@ public class OrderEventsController implements Serializable {
 
         // flashMessage.notify(Type.success, "lsValMAP was created successfully!");
 
-        return Response.ok("redirect:lsValMAPs").build();
+        return Response.ok("redirect:events").build();
     }
 
     @GET @Path("response")

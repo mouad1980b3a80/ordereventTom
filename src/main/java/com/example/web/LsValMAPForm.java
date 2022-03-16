@@ -2,50 +2,56 @@ package com.example.web;
 
 import java.io.Serializable;
 import java.util.Objects;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 import jakarta.mvc.binding.MvcBinding;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.ws.rs.FormParam;
 
+//TODO: rename to filter bean
+@Named("lsValMAPForm")
+@RequestScoped
 public class LsValMAPForm implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @FormParam("startRow")
-    private Long startRow;
+    @FormParam("manId")
+    @MvcBinding
+    private String manId;
 
    // @NotBlank
-    @FormParam("endRow")
+    @FormParam("eventType")
     @MvcBinding
-    private String endRow;
+    private String eventType;
 
     //@NotBlank
     //@Size(min = 10, max = 2000)
-    @FormParam("orderType")
+    @FormParam("actionClass")
     @MvcBinding
-    private String orderType;
+    private String actionClass;
 
-    public Long getStartRow() {
-        return startRow;
+    public String getManId() {
+        return manId;
     }
 
-    public void setStartRow(Long startRow) {
-        this.startRow = startRow;
+    public void setManId(String manId) {
+        this.manId = manId;
     }
 
-    public String getEndRow() {
-        return endRow;
+    public String getEventType() {
+        return eventType;
     }
 
-    public void setEndRow(String endRow) {
-        this.endRow = endRow;
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
     }
 
-    public String getOrderType() {
-        return orderType;
+    public String getActionClass() {
+        return actionClass;
     }
 
-    public void setOrderType(String orderType) {
-        this.orderType = orderType;
+    public void setActionClass(String actionClass) {
+        this.actionClass = actionClass;
     }
 }

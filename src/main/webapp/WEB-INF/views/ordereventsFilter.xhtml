@@ -34,30 +34,33 @@
 test
 <!-- List group -->
 <div class="container-fluid">
-    <c:set var="formActionUrl" value="#{request.contextPath}/ui/orders"/>
-    <form id="form" name="form" role="form" class="form"
-            action="${formActionUrl}" method="post">
+    <c:set var="formActionUrl" value="#{request.contextPath}/ui/events"/>
+
 
         <h:panelGrid id="panel" columns="2" border="0"
                 cellpadding="10" cellspacing="1" class="display .col-md-8"
                 >
+            <form id="form" name="form" role="form" class="form"
+                    action="${formActionUrl}" method="post">
+            manid
+            <input id="manId" name="manId" type="text"
+                    class="display" value="${lsValMAPForm.manId}"/>
+            eventType
+            <input id="eventType" name="eventType" type="text"
+                    class="display" value="${lsValMAPForm.eventType}"/>
 
-            <f:facet name="header">
-                <h:outputText value="Login"/>
-            </f:facet>
-            <h:outputLabel value="Username"/>
-            <h:inputText/>
-            <h:outputLabel value="Password"/>
-            <h:inputSecret/>
+            <input id="actionClass" name="actionClass" type="text"
+                    class="display" value="${lsValMAPForm.actionClass}"/>
 
-            <f:facet name="footer">
-                <h:panelGroup style="display:block; text-align:center">
-                    <h:commandButton id="submit" value="Submit"/>
-                </h:panelGroup>
-            </f:facet>
+
+
+                    <input id="submit" name="submit" type="submit"
+                            class="form-control" value="Apply filter"/>
+
+            </form>
         </h:panelGrid>
-        <input id="name2" name="name" type="text" class="form-control" value="${orderTypelocal}"/>
-    </form>
+
+
 
     <!--</h:form>-->
 </div>
