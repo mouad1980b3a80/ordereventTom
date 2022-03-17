@@ -42,7 +42,30 @@
 <h:body>
     <h:outputText value="${name}"/>
 </h:body>
-test
+Filter criteria used:
+<h:panelGrid id="panel" columns="2" border="0"
+        cellpadding="10" cellspacing="1" class="display .col-md-8"
+>
+    <form id="form" name="form" role="form" class="form"
+            action="${formActionUrl}" method="post">
+        manid
+        <input id="manId" name="manId" type="text"
+                class="display" value="${lsValMAPForm.manId}"/>
+        eventType
+        <input id="eventType" name="eventType" type="text"
+                class="display" value="${lsValMAPForm.eventType}"/>
+
+        <input id="actionClass" name="actionClass" type="text"
+                class="display" value="${lsValMAPForm.actionClass}"/>
+
+
+
+        <input id="submit" name="submit" type="submit"
+                class="form-control" value="Apply filter"/>
+
+    </form>
+</h:panelGrid>
+
 <!-- List group -->
 <div class="container-fluid">
     <!--<h:form id="form"> -->
@@ -93,9 +116,9 @@ test
         </tfoot>
 
     </table>
-    <c:set var="formActionUrl" value="#{request.contextPath}/ui/hello"/>
+    <!--<c:set var="formActionUrl" value="#{request.contextPath}/ui/hello"/>
     <form id="form" name="form" role="form" class="form" action="${formActionUrl}" method="post">
-    </form>
+    </form> -->
     <!-- TODO use a post to pass parameters -->
     <a href="events/filter">Explore order event history</a>
     <!--</h:form>-->

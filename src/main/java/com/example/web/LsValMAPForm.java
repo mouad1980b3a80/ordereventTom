@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
+import jakarta.mvc.RedirectScoped;
 import jakarta.mvc.binding.MvcBinding;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -11,7 +12,8 @@ import jakarta.ws.rs.FormParam;
 
 //TODO: rename to filter bean
 @Named("lsValMAPForm")
-@RequestScoped
+//@RequestScoped
+@RedirectScoped
 public class LsValMAPForm implements Serializable {
 
     private static final long serialVersionUID = 1L;

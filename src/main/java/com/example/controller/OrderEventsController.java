@@ -41,13 +41,18 @@ public class OrderEventsController implements Serializable {
     @GET
 
     @View("orderevents.xhtml")
-    public void orderEventsVoid(@BeanParam LsValMAPForm form) {
+    public void orderEventsVoid() { //TODO maybe discar
         System.out.println("lll");
         fetchOrderEvents();
         model.put("orderTypelocal", "TOrder");
         model.put("name", "Mouad");
-        model.put("maxTblRows", 5);
-        model.put("currentRows", 1);
+        //lsValMAPForm.setEventType(form.getEventType());
+        //form.getManId();
+        //form.getActionClass();
+       // lsValMAPForm.setManId("98726326");
+      //  model.put("lsValMAPForm", lsValMAPForm);  // or we use the injected one?
+       // model.put("maxTblRows", 5);
+       // model.put("currentRows", 1);
     }
 
     private List<OrderEventHistory> fetchOrderEvents() {
@@ -73,7 +78,7 @@ public class OrderEventsController implements Serializable {
         lsValMAPForm.setEventType("eventType");
         lsValMAPForm.setActionClass("ActionClass");
         model.put("name", "filterr");
-        model.put("lsValMAPForm", lsValMAPForm);
+        //model.put("lsValMAPForm", lsValMAPForm);
         return "ordereventsFilter.xhtml";
     }
 
@@ -83,7 +88,9 @@ public class OrderEventsController implements Serializable {
     //@CsrfProtected TODO reintegrate this! Idea use same page for filter and list and just switch visibility?
 
     //@ValidateOnExecution(type = ExecutableType.NONE)
-    public Response save(@Valid @BeanParam LsValMAPForm form) {
+    public Response save(
+        @Valid @BeanParam LsValMAPForm form
+        ) {
         //log.log(Level.INFO, "saving new lsValMAP @{0}", form);
 
         if (validationResult.isFailed()) {
@@ -105,6 +112,11 @@ public class OrderEventsController implements Serializable {
         //lsValMAPRepository.save(lsValMAP);
 
         // flashMessage.notify(Type.success, "lsValMAP was created successfully!");
+        lsValMAPForm.setManId(form.getManId());
+        lsValMAPForm.setActionClass(form.getActionClass());
+        lsValMAPForm.setManId(form.getManId());
+        //model.put("lsValMAPForm", lsValMAPForm);
+        //model.put("lsValMAPForm", lsValMAPForm);
 
         return Response.ok("redirect:events").build();
     }
