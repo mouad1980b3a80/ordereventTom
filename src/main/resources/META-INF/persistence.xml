@@ -5,9 +5,9 @@
 
 
       <persistence-unit name="OraclePU" transaction-type="JTA">
-        <jta-data-source>java:comp/DefaultDataSource</jta-data-source>
+        <jta-data-source>java:jboss/datasources/lsDS</jta-data-source>
 
-
+          <class>com.example.domain.OrderEventHistory</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
     <properties>

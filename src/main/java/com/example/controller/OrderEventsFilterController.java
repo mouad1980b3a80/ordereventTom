@@ -7,7 +7,7 @@ import java.util.List;
 import com.example.domain.Task;
 import com.example.domain.TestLsValMAP;
 import com.example.web.AlertMessage;
-import com.example.web.LsValMAPForm;
+import com.example.web.FilterOrderEventsForm;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
@@ -73,7 +73,7 @@ public class OrderEventsFilterController implements Serializable {
     @POST
     @CsrfProtected
     //@ValidateOnExecution(type = ExecutableType.NONE)
-    public Response save(@Valid @BeanParam LsValMAPForm form) {
+    public Response save(@Valid @BeanParam FilterOrderEventsForm form) {
         //log.log(Level.INFO, "saving new lsValMAP @{0}", form);
 
         if (validationResult.isFailed()) {

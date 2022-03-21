@@ -35,8 +35,6 @@ test
 <!-- List group -->
 <div class="container-fluid">
     <c:set var="formActionUrl" value="#{request.contextPath}/ui/events"/>
-
-
         <h:panelGrid id="panel" columns="2" border="0"
                 cellpadding="10" cellspacing="1" class="display .col-md-8"
                 >
@@ -44,13 +42,13 @@ test
                     action="${formActionUrl}" method="post">
             manid
             <input id="manId" name="manId" type="text"
-                    class="display" value="${lsValMAPForm.manId}"/>
+                    class="display" value="${filterOrderEventsForm.manId}"/>
             eventType
             <input id="eventType" name="eventType" type="text"
-                    class="display" value="${lsValMAPForm.eventType}"/>
+                    class="display" value="${filterOrderEventsForm.eventType}"/>
 
             <input id="actionClass" name="actionClass" type="text"
-                    class="display" value="${lsValMAPForm.actionClass}"/>
+                    class="display" value="${filterOrderEventsForm.actionClass}"/>
                     <input id="submit" name="submit" type="submit"
                             class="display" value="Apply filter"/>
             </form>

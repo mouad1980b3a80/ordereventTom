@@ -11,10 +11,10 @@ import jakarta.validation.constraints.Size;
 import jakarta.ws.rs.FormParam;
 
 //TODO: rename to filter bean
-@Named("lsValMAPForm")
+@Named("filterOrderEventsForm")
 //@RequestScoped
 @RedirectScoped
-public class LsValMAPForm implements Serializable {
+public class FilterOrderEventsForm implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

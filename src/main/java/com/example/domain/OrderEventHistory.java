@@ -23,8 +23,8 @@ import jakarta.validation.constraints.NotNull;
 /**
  *
  */
-//@Entity
-//@Table(name="lsordereventhistory")
+@Entity
+@Table(name="lsordereventhistory")
 public class OrderEventHistory implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -73,60 +73,60 @@ public class OrderEventHistory implements Serializable {
     CINFO5	15			Y	VARCHAR2 (1024 Char)
     CEDIREF	16		2	Y	VARCHAR2 (100 Char)*/
     
-  //  @Id
-   // @SequenceGenerator(name = SEQUENCE_NAME, sequenceName = SEQUENCE_NAME, allocationSize = 1)
-   // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
+    @Id
+    @SequenceGenerator(name = SEQUENCE_NAME, sequenceName = SEQUENCE_NAME, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
 
-   // @Column(name = "NAUFID")
+    @Column(name = "NAUFID")
     private Long aufId;
 
-   // @Column(name = "NAUFEDIID")
+    @Column(name = "NAUFEDIID")
     private Long aufEdiId;
 
-   // @Column(name = "CMANID")
-   // @NotNull
+   @Column(name = "CMANID")
+   @NotNull
     private String manId;
 
-    // @Column(name = "CEVENTTYPE")
-    // @NotNull
+    @Column(name = "CEVENTTYPE")
+    @NotNull
     private String eventType;
 
-    // @Column(name = "CACTIONCLASS")
-    // @NotNull
+    @Column(name = "CACTIONCLASS")
+    @NotNull
     private String actionClass;
 
-    // @Column(name = "CORDERTYPE")
+    @Column(name = "CORDERTYPE")
     private String orderType;
 
-    /// @Column(name = "CACTION")
+    @Column(name = "CACTION")
     private String action;
 
-    // @Column(name = "CINFO1")
+    @Column(name = "CINFO1")
     private String info1;
 
-    // @Column(name = "CINFO2")
+    @Column(name = "CINFO2")
     private String info2;
 
-    // @Column(name = "CINFO3")
+    @Column(name = "CINFO3")
     private String info3;
 
-    // @Column(name = "CINFO4")
+    @Column(name = "CINFO4")
     private String info4;
 
-    // @Column(name = "CINFO5")
+    @Column(name = "CINFO5")
     private String info5;
 
-    // @Column(name = "CEDIREF")
+    @Column(name = "CEDIREF")
     private String ediRef;
 
-    // @Column(name = "derfassung")
+    @Column(name = "derfassung")
     private LocalDateTime createdDate;
 //TODO: check localDateTime again
-    // @Column(name = "daenderung")
+    @Column(name = "daenderung")
     private LocalDateTime lastModifiedDate;
 
-    // @Column(name = "CUSERNAME")
-    // @NotNull
+    @Column(name = "CUSERNAME")
+    @NotNull
     private String username;
 
 

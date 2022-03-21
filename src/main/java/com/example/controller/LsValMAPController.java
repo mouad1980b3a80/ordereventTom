@@ -8,12 +8,9 @@ import jakarta.inject.Inject;
 import org.eclipse.krazo.engine.Viewable;
 import com.example.domain.LsValMAPRepository;
 import com.example.domain.TestLsValMAP;
-import com.example.domain.LsValMAPRepository;
 import com.example.web.AlertMessage;
-import com.example.web.LsValMAPForm;
+import com.example.web.FilterOrderEventsForm;
 import jakarta.annotation.PostConstruct;
-import jakarta.enterprise.inject.Any;
-import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
 import jakarta.mvc.View;
@@ -85,7 +82,7 @@ public class LsValMAPController {
     @Path("add")
     public Viewable add() {
         //log.log(Level.INFO, "add new lsValMAP");
-        LsValMAPForm form = new LsValMAPForm();
+        FilterOrderEventsForm form = new FilterOrderEventsForm();
         models.put("lsValMAP", form);
         return new Viewable("add.xhtml");
     }
@@ -94,7 +91,7 @@ public class LsValMAPController {
     @Path("add2")
     public Viewable add2() {
         //log.log(Level.INFO, "add new lsValMAP");
-        LsValMAPForm form = new LsValMAPForm();
+        FilterOrderEventsForm form = new FilterOrderEventsForm();
         models.put("lsValMAP", form);
         return new Viewable("add.xhtml");
     }
@@ -102,7 +99,7 @@ public class LsValMAPController {
     @POST
     @CsrfProtected
     //@ValidateOnExecution(type = ExecutableType.NONE)
-    public Response save(@Valid @BeanParam LsValMAPForm form) {
+    public Response save(@Valid @BeanParam FilterOrderEventsForm form) {
         //log.log(Level.INFO, "saving new lsValMAP @{0}", form);
 
         if (validationResult.isFailed()) {
@@ -135,7 +132,7 @@ public class LsValMAPController {
 
         TestLsValMAP lsValMAP = lsValMAPRepository.findById(id);
 
-        LsValMAPForm form = new LsValMAPForm();
+        FilterOrderEventsForm form = new FilterOrderEventsForm();
         //form.setMapid(lsValMAP.getMapid());
         //form.setValueOrig(lsValMAP.getValueOrig());
         //form.setMapq(lsValMAP.getMapq());
@@ -146,7 +143,7 @@ public class LsValMAPController {
     @PUT
     @Path("{id}")
     @CsrfProtected
-    public Response update(@PathParam(value = "id") Long id, @Valid @BeanParam LsValMAPForm form) {
+    public Response update(@PathParam(value = "id") Long id, @Valid @BeanParam FilterOrderEventsForm form) {
        // log.log(Level.INFO, "updating existed lsValMAP@id:{0}, form data:{1}", new Object[]{id, form});
 
         if (validationResult.isFailed()) {
