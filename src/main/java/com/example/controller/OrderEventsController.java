@@ -2,7 +2,6 @@ package com.example.controller;
 
 import static jakarta.ws.rs.core.Response.Status.BAD_REQUEST;
 import java.io.Serializable;
-import com.example.domain.TestLsValMAP;
 import com.example.domain.OrderEventRepository;
 import com.example.web.AlertMessage;
 import com.example.web.FilterOrderEventsForm;
@@ -35,7 +34,6 @@ public class OrderEventsController implements Serializable {
     OrderEventRepository orderEventRepository;
 
     @GET
-
     @View("orderevents.xhtml")
     public void orderEventsVoid() {
         System.out.println("lll");
@@ -47,7 +45,7 @@ public class OrderEventsController implements Serializable {
     }
 
     private void fetchOrderEvents() {
-        model.put("orderEvents",  orderEventRepository.getAuthors());
+        model.put("orderEvents",  orderEventRepository.getOrderEvents());
     }
 
     @GET @Path("filter")

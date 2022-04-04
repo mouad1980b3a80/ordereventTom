@@ -1,0 +1,107 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <!--
+    <nav id="nav" version="2.0" class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" role="navigation">
+        <c:set value="#{request.contextPath}/mvc/lsvalmaps" var="lsvalmaps" />
+        <c:set value="#{request.contextPath}/mvc/lsvalmaps/new" var="lsvalmapsNew" />
+        <div class="container">
+            <a class="navbar-brand" href="${lsvalmaps}">lsvalmapBOARD</a>
+            <button class="navbar-toggler" 
+                    type="button" 
+                    data-toggle="collapse" 
+                    data-target="#navbarDemo" 
+                    aria-controls="#navbarDemo" 
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">twst</span>
+            </button>
+           
+            <div id="navbarDemo" class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+
+                        <a class="nav-link" href="#{mvc.basePath}/lsvalmaps">Home</a>
+                        <a class="nav-link" href="#{mvc.basePath}/orderEvents">OrderEvents</a>
+                        <a class="nav-link" href="#{mvc.basePath}/Queue">Queue Jobs</a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="${lsvalmapsNew}">
+                            <i class="fa fa-plus-circle">${null}</i>
+                            New lsvalmap
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    -->
+    <!-- this is the MDB NavBar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark "> <!--navbar-light bg-light  -->
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarLeftAlignExample"
+                    aria-controls="navbarLeftAlignExample"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarLeftAlignExample">
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <!-- Navbar dropdown -->
+                    <li class="nav-item dropdown">
+                        <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDropdown"
+                                role="button"
+                                data-mdb-toggle="dropdown"
+                                aria-expanded="false"
+                        >
+                            Items
+                        </a>
+                        <!-- Dropdown menu -->
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#{request.contextPath}/ui/events/filter">Order events</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Another action</a>
+                            </li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled"
+                        >Disabled</a
+                        >
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+</ui:composition>

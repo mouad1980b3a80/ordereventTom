@@ -1,127 +1,121 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:h="http://xmlns.jcp.org/jsf/html"
-        xmlns:f="http://xmlns.jcp.org/jsf/core"
-        xmlns:c="http://java.sun.com/jsp/jstl/core">
-<h:head>
-    <title>Hello</title>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-            rel="stylesheet"
-            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-            crossorigin="anonymous"/>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        template="/WEB-INF/layout/template.xhtml">
 
-    <!-- styles -->
-    <link rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-            crossorigin="anonymous"/>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-            rel="stylesheet"
-            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-            crossorigin="anonymous"/>
-    <link href="${request.contextPath}/resources/css/main.css" rel="stylesheet"/>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <ui:define name="pageTitle">TASK LIST</ui:define>
+    <ui:define name="content">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"/>
+        <h:outputText value="${name}"/>
 
-    <script type="text/javascript" charset="utf8"
-            src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-    <script>
-        $(document).ready(function () {
+        Filter criteria used:
+        <h:panelGrid id="panel" columns="2" border="0"
+                cellpadding="10" cellspacing="1" class="display .col-md-8">
+            <form id="form" name="form" role="form" class="form"
+                    action="${formActionUrl}" method="post">
+                manid
+                <input id="manId" name="manId" type="text"
+                        class="display" value="${filterOrderEventsForm.manId}"/>
+                eventType
+                <input id="eventType" name="eventType" type="text"
+                        class="display" value="${filterOrderEventsForm.eventType}"/>
 
-            $('#eventsTable').DataTable( {
-                "search": {
-                    "smart": false
-                },
-                "paging": true,
-                "pagingType": "full_numbers"
-            });
-        });
-    </script>
-</h:head>
-<h:body>
-    <h:outputText value="${name}"/>
-</h:body>
-Filter criteria used:
-<h:panelGrid id="panel" columns="2" border="0"
-        cellpadding="10" cellspacing="1" class="display .col-md-8"
->
-    <form id="form" name="form" role="form" class="form"
-            action="${formActionUrl}" method="post">
-        manid
-        <input id="manId" name="manId" type="text"
-                class="display" value="${filterOrderEventsForm.manId}"/>
-        eventType
-        <input id="eventType" name="eventType" type="text"
-                class="display" value="${filterOrderEventsForm.eventType}"/>
-
-        <input id="actionClass" name="actionClass" type="text"
-                class="display" value="${filterOrderEventsForm.actionClass}"/>
+                <input id="actionClass" name="actionClass" type="text"
+                        class="display" value="${filterOrderEventsForm.actionClass}"/>
 
 
+                <input id="submit" name="submit" type="submit"
+                        class="form-control" value="Apply filter"/>
 
-        <input id="submit" name="submit" type="submit"
-                class="form-control" value="Apply filter"/>
+            </form>
+        </h:panelGrid>
 
-    </form>
-</h:panelGrid>
+        <!-- List group -->
+      <!--  <div class="container-fluid"> -->
+            <!--<h:form id="form"> -->
+            Filter paert should come here:
+            <input id="name2" name="name" type="text"
+                    class="form-control" value="${orderTypelocal}"/>
+            Table jquery
+            <table id="eventsTable" class="display" style="width:100%">
 
-<!-- List group -->
-<div class="container-fluid">
-    <!--<h:form id="form"> -->
-    Filter paert should come here:
-    <input id="name2" name="name" type="text"
-            class="form-control" value="${orderTypelocal}"/>
-    Table jquery
-    <table id="eventsTable" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th>AufId</th>
+                    <th>AufEdiId</th>
+                    <th>Client</th>
+                    <th>Event type</th>
+                    <th>EdiRef</th>
+                    <th>Info1</th>
+                    <th>Info2</th>
+                    <th>Info3</th>
+                    <th>Info4</th>
+                    <th>Info5</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="orderEvent" begin="0" items="${orderEvents}">
+                    <tr>
+                        <td>
+                            ${orderEvent.aufId}
+                        </td>
+                        <td>
+                            ${orderEvent.aufEdiId}
+                        </td>
+                        <td>
+                            ${orderEvent.manId}
+                        </td>
+                        <td>
+                            ${orderEvent.eventType}
+                        </td>
+                        <td>
+                            ${orderEvent.ediRef}
+                        </td>
+                        <td>
+                            ${orderEvent.info1}
+                        </td>
+                        <td>
+                            ${orderEvent.info2}
+                        </td>
+                        <td>
+                            ${orderEvent.info3}
+                        </td>
+                        <td>
+                            ${orderEvent.info4}
+                        </td>
+                        <td>
+                            ${orderEvent.info5}
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>AufId</th>
+                    <th>AufEdiId</th>
+                    <th>Client</th>
+                    <th>Event type</th>
+                    <th>EdiRef</th>
+                    <th>Info1</th>
+                    <th>Info2</th>
+                    <th>Info3</th>
+                    <th>Info4</th>
+                    <th>Info5</th>
+                </tr>
+                </tfoot>
 
-        <thead>
-        <tr>
-            <th>AufId</th>
-            <th>AufEdiId</th>
-            <th>Event type</th>
-            <th>EdiRef</th>
-            <th>Info1</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="orderEvent" begin="0" items="${orderEvents}">
-            <tr>
-                <td>
-                    ${orderEvent.aufId}
-                </td>
-                <td>
-                    ${orderEvent.aufEdiId}
-                </td>
-                <td>
-                    ${orderEvent.eventType}
-                </td>
-                <td>
-                    ${orderEvent.ediRef}
-                </td>
-                <td>
-                    ${orderEvent.info1}
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-        <tfoot>
-        <tr>
-            <th>AufId</th>
-            <th>AufEdiId</th>
-            <th>Event type</th>
-            <th>EdiRef</th>
-            <th>Info1</th>
-        </tr>
-        </tfoot>
+            </table>
+            <!--<c:set var="formActionUrl" value="#{request.contextPath}/ui/hello"/>
+            <form id="form" name="form" role="form" class="form" action="${formActionUrl}" method="post">
+            </form> -->
+            <!-- TODO use a post to pass parameters -->
+            <a href="events/filter">Explore order event history</a>
+            <!--</h:form>-->
+        <!--</div> -->
 
-    </table>
-    <!--<c:set var="formActionUrl" value="#{request.contextPath}/ui/hello"/>
-    <form id="form" name="form" role="form" class="form" action="${formActionUrl}" method="post">
-    </form> -->
-    <!-- TODO use a post to pass parameters -->
-    <a href="events/filter">Explore order event history</a>
-    <!--</h:form>-->
-</div>
+    </ui:define>
 
-</html>
+
+</ui:composition>
+

@@ -33,6 +33,10 @@ public class FilterOrderEventsForm implements Serializable {
     @MvcBinding
     private String actionClass;
 
+    @FormParam("orderId")
+    @MvcBinding
+    private String orderId;
+
     public String getManId() {
         return manId;
     }
@@ -55,5 +59,13 @@ public class FilterOrderEventsForm implements Serializable {
 
     public void setActionClass(String actionClass) {
         this.actionClass = actionClass;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 }

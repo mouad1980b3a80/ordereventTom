@@ -1,128 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:h="http://xmlns.jcp.org/jsf/html"
-        xmlns:f="http://xmlns.jcp.org/jsf/core"
-        xmlns:c="http://java.sun.com/jsp/jstl/core">
-<h:head>
-    <title>Hello</title>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-            rel="stylesheet"
-            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-            crossorigin="anonymous"/>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        template="/WEB-INF/layout/template.xhtml">
 
-    <!-- styles -->
-    <link rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-            crossorigin="anonymous"/>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-            rel="stylesheet"
-            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-            crossorigin="anonymous"/>
-    <link href="${request.contextPath}/resources/css/main.css" rel="stylesheet"/>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <ui:define name="pageTitle">Monitoring home</ui:define>
+    <ui:define name="content">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"/>
+    </ui:define>
 
-    <script type="text/javascript" charset="utf8"
-            src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-    <script>
-        $(document).ready(function () {
 
-            $('#taskTable').DataTable( {
-                "search": {
-                    "smart": false
-                },
-                "paging": true,
-                "pagingType": "full_numbers"
-            });
-        });
-    </script>
-</h:head>
-<h:body>
-    <h:outputText value="${name}"/>
-</h:body>
-test
-<!-- List group -->
-<div class="container-fluid">
-    <!--<h:form id="form"> -->
-    Filter paert should come here:
-    <input id="name2" name="name" type="text" class="form-control" value="${orderTypelocal}"/>
-    Table jquery
-    <table id="taskTable" class="display" style="width:100%">
+</ui:composition>
 
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Position</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="task" begin="0" items="${todotasks}">
-
-            <tr>
-                <td>
-                    ${task.id}
-                </td>
-                <td>
-                    ${task.name}
-                </td>
-            </tr>
-
-        </c:forEach>
-        </tbody>
-        <tfoot>
-        <tr>
-            <th>Name</th>
-            <th>Position</th>
-        </tr>
-        </tfoot>
-
-    </table>
-    Table JSF
-    <c:set var="formActionUrl" value="#{request.contextPath}/ui/hello"/>
-    <form id="form" name="form" role="form" class="form" action="${formActionUrl}" method="post">
-        <!--    <h:dataTable value="${todotasks}" var="task"
-                    styleClass="employeeTable"
-                    headerClass="employeeTableHeader"
-                    rowClasses="employeeTableOddRow,employeeTableEvenRow"> -->
-        <h:dataTable
-                value="${todotasks}" var="task"
-                first="${currentRows}"
-                rows="${maxTblRows}"
-                headerClass="table" styleClass="table">
-            <h:column headerClass=".col-md-4">
-                <f:facet name="header">Id</f:facet>${task.id}</h:column>
-
-            <h:column headerClass=".col-md-4">
-                <f:facet name="header">Name</f:facet>
-                ${task.name}
-            </h:column>
-
-            <h:column headerClass=".col-md-4">
-                <f:facet name="header">Description</f:facet>
-                ${task.description}
-            </h:column>
-        </h:dataTable>
-        footer?? jj
-
-        <h:panelGroup>
-
-            <h:outputLink value="hello/back?start=5&amp;end=10">
-                weiterOld
-            </h:outputLink>
-
-            <!--  <h:selectOneMenu value="${welcomeBean.selectedPage}">
-                  <f:selectItems value="${welcomeBean.pages}" var="page"
-                          itemLabel="Seite ${page}" itemValue="${page}" />
-                  <f:ajax listener="${welcomeBean.pageChange}" render="@form"/>
-              </h:selectOneMenu>-->
-            <h:link outcome="ui/hello/forward">Zurück</h:link>
-
-        </h:panelGroup>
-    </form>
-    <!--</h:form>-->
-</div>
-
-</html>

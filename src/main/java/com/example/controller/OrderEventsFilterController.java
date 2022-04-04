@@ -23,7 +23,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Response;
-//TODO delete of not needed
+//TODO delete if not needed
 @Controller
 @RequestScoped
 @Path("ordereventsfilter")
